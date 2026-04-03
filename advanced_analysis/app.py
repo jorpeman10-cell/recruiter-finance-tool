@@ -196,7 +196,7 @@ def render_sidebar():
     
     # 现金储备
     if 'cash_reserve' not in analyzer.config:
-        analyzer.config['cash_reserve'] = 3000000
+        analyzer.config['cash_reserve'] = 1800000
     analyzer.config['cash_reserve'] = st.sidebar.number_input(
         "现金储备 (元)",
         value=int(analyzer.config['cash_reserve']),
@@ -240,7 +240,7 @@ def render_dashboard():
         return
     
     # 设置当前实际现金余额（已回款可能已消耗，请根据实际余额调整）
-    cash_reserve = analyzer.config.get('cash_reserve', 3000000)
+    cash_reserve = analyzer.config.get('cash_reserve', 1800000)
     current_balance = st.sidebar.number_input(
         "当前现金余额 (元)",
         value=int(cash_reserve),
@@ -677,7 +677,7 @@ def render_cashflow_calendar():
     
     # 计算参考数据
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    cash_reserve = analyzer.config.get('cash_reserve', 3000000)
+    cash_reserve = analyzer.config.get('cash_reserve', 1800000)
     collected_revenue = sum(
         p.actual_payment for p in analyzer.positions
         if p.payment_date and p.payment_date.year == today.year and p.payment_date <= today
@@ -783,7 +783,7 @@ def render_whatif_simulator():
     
     # 获取基础数据
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    cash_reserve = analyzer.config.get('cash_reserve', 3000000)
+    cash_reserve = analyzer.config.get('cash_reserve', 1800000)
     collected_revenue = sum(
         p.actual_payment for p in analyzer.positions
         if p.payment_date and p.payment_date.year == today.year and p.payment_date <= today
@@ -907,7 +907,7 @@ def render_alert_system():
         return
     
     # 设置当前实际现金余额（从session_state获取首页设置的值）
-    cash_reserve = analyzer.config.get('cash_reserve', 3000000)
+    cash_reserve = analyzer.config.get('cash_reserve', 1800000)
     # 优先使用首页设置的值，否则使用默认值
     default_balance = st.session_state.get('home_current_balance', cash_reserve)
     current_balance = st.number_input(
