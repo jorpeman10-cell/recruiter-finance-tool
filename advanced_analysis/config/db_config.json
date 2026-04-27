@@ -1,0 +1,12 @@
+{
+  "host": "127.0.0.1",
+  "port": 3306,
+  "database": "gllue",
+  "username": "debian-sys-maint",
+  "password": "SWZVbnRZN2JRWk41a0Rzaw==",
+  "use_ssh": true,
+  "ssh_host": "118.190.96.172",
+  "ssh_port": 9998,
+  "ssh_user": "root",
+  "ssh_password": "VHN0YXIyMDI2IQ=="
+}
