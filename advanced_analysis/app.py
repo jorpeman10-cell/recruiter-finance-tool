@@ -529,7 +529,7 @@ def render_sidebar():
         # 同步数据按钮
         sync_col1, sync_col2 = st.sidebar.columns([3, 2])
         with sync_col1:
-            if st.button("🚀 同步数据", type="primary", key="db_sync_btn", use_container_width=True):
+            if st.button("🚀 同步数据", type="primary", key="db_sync_btn"):
                 with st.spinner("同步中..."):
                     try:
                         from gllue_db_client import GllueDBClient
@@ -553,7 +553,7 @@ def render_sidebar():
                         st.sidebar.error(f"同步失败: {err_msg[:80]}")
         
         with sync_col2:
-            if st.button("⚙️ 设置", key="db_settings_btn", use_container_width=True):
+            if st.button("⚙️ 设置", key="db_settings_btn"):
                 st.session_state.show_db_settings = True
         
         # 设置面板（弹窗）
@@ -574,7 +574,7 @@ def render_sidebar():
                 
                 c1, c2, c3 = st.columns([2, 2, 2])
                 with c1:
-                    if st.button("💾 保存", key="save_settings", use_container_width=True):
+                    if st.button("💾 保存", key="save_settings"):
                         updated = {
                             "host": edit_db_host,
                             "port": int(edit_db_port),
@@ -595,7 +595,7 @@ def render_sidebar():
                             st.session_state.db_connection_error = ''
                             st.rerun()
                 with c2:
-                    if st.button("🔌 测试", key="test_settings", use_container_width=True):
+                    if st.button("🔌 测试", key="test_settings"):
                         test_cfg = {
                             "host": edit_db_host,
                             "port": int(edit_db_port),
@@ -638,7 +638,7 @@ def render_sidebar():
                                 else:
                                     st.error(f"❌ {terr[:100]}")
                 with c3:
-                    if st.button("❌ 取消", key="cancel_settings", use_container_width=True):
+                    if st.button("❌ 取消", key="cancel_settings"):
                         st.session_state.show_db_settings = False
                         st.rerun()
     
